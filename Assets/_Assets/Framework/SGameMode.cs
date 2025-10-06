@@ -5,8 +5,24 @@ public class SGameMode : MonoBehaviour
     [SerializeField] private SPlayer mPlayerGameobjectPrefab;
 
     SPlayer mPlayerGameObject;
+    public SPlayer mplayer => mPlayerGameObject;
+    public static SGameMode mMainGameMode;
+    private void OnDestroy()
+    {
+        if (mMainGameMode == this) //making persistant through levels
+        {
+            mMainGameMode = null;
+        }
+    }
     void Awake()
     {
+        if(mMainGameMode != null) //making sure we only have one gamemode 
+        {
+            Destroy(gameObject);
+        }
+
+        mMainGameMode = this;
+
         SPlayerStart playerStart = FindFirstObjectByType<SPlayerStart>();
         if(!playerStart)
         {

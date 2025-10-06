@@ -7,7 +7,6 @@ public class SSpringArm : MonoBehaviour
     [SerializeField] private Transform mAttachTransform;
     [SerializeField] private float mArmLength = 3f;
     [SerializeField] private float mCameraCollionOffset = 0.1f;
-    [SerializeField] private bool mDoCollisionTest = true;
     [SerializeField] private LayerMask mCollisionLayerMask;
     void LateUpdate()
     {
