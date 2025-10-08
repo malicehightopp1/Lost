@@ -5,6 +5,7 @@ public class SGameMode : MonoBehaviour
     [SerializeField] private SPlayer mPlayerGameobjectPrefab;
 
     SPlayer mPlayerGameObject;
+    public SBattleManager mBattleManager { get; private set; }
     public SPlayer mplayer => mPlayerGameObject;
     public static SGameMode mMainGameMode;
     private void OnDestroy()
@@ -16,6 +17,8 @@ public class SGameMode : MonoBehaviour
     }
     void Awake()
     {
+        mBattleManager = new SBattleManager();
+
         if(mMainGameMode != null) //making sure we only have one gamemode 
         {
             Destroy(gameObject);

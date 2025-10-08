@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementController))]
 public class SPlayer : MonoBehaviour
 {
     [SerializeField] private SCameraRig mCameraRigPrefab;
+
+    private BattleState battleState;
 
     private PlayerInputAction mPlayerInputActions;
 
@@ -30,5 +33,24 @@ public class SPlayer : MonoBehaviour
     private void OnDisable()
     {
         mPlayerInputActions.Disable();//disabled when script is disabled
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == gameObject)
+        {
+            return;
+        }
+
+        SBattlePartyComponent otherBattleComponent = other.GetComponent<SBattlePartyComponent>();
+        if(otherBattleComponent && !IsInBattle())
+        {
+            //SGameMode.mMainGameMode.mBattleManager.startBattle(mBattlePartyComponent, otherBattleComponent);
+        }
+    }
+
+    private bool IsInBattle()
+    {
+        return battleState == BattleState.InBattle;
     }
 }
