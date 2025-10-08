@@ -16,7 +16,7 @@ public class SEnemy : MonoBehaviour
         get { return mTarget; }
         set 
         { 
-            if(Target == value) //not updating when we dont have too
+            if(Target == value) //not updating when we dont have to
             {
                 return;
             }
