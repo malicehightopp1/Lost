@@ -35,4 +35,10 @@ public class SCameraRig : MonoBehaviour
         mPitch = Mathf.Clamp(mPitch, mPitchmin, mPitchMax);
         mPitchTransform.localEulerAngles = new Vector3(mPitch, 0, 0);
     }
+    internal void ResetViewAngle()
+    {
+        mPitch = 0;
+        mYawTransform.localRotation = Quaternion.identity;
+    }
 }
+

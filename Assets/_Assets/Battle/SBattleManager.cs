@@ -6,6 +6,9 @@ using UnityEngine;
 public class SBattleManager
 {
     List<SBattleSite> mBattleSites;
+    private PlayerInputAction mAction;
+
+    private BattleState mBattleStates;
     public void startBattle(SBattlePartyComponent PlayerParty, SBattlePartyComponent EnemyParty)
     {
         if(mBattleSites == null)
@@ -31,5 +34,6 @@ public class SBattleManager
             partyBattleCharacter.transform.rotation = partyBattleSite.transform.rotation; //setting the rotation correctly
             i++;
         }
+        Party.FinishPrep();
     }
 }
