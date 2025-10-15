@@ -1,16 +1,18 @@
-using NUnit.Framework;
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class SBattleManager
+public class SBattleManager : MonoBehaviour 
 {
     List<SBattleSite> mBattleSites;
+    List<SBattleCharacter> mBattleCharacter = new List<SBattleCharacter>();
     private PlayerInputAction mAction;
 
     private BattleState mBattleStates;
     public void startBattle(SBattlePartyComponent PlayerParty, SBattlePartyComponent EnemyParty)
     {
+        mBattleCharacter.Clear(); //clearing before new battle
         if(mBattleSites == null)
         {
             mBattleSites = new List<SBattleSite>();
@@ -19,6 +21,29 @@ public class SBattleManager
         Debug.Log($"Starting battle between : {PlayerParty.gameObject.name} and {EnemyParty.gameObject.name}");
         PrepParty(PlayerParty);
         PrepParty(EnemyParty);
+        StartCoroutine(StartTurns());
+    }
+    IEnumerator StartTurns()
+    {
+        //TODO: refractor to not hard code delay
+        yield return new WaitForSeconds(2);
+        NextTurn();
+    }
+    private void NextTurn() 
+    {
+        mBattleCharacter = mBattleCharacter.OrderBy((batteCharacter) => { return batteCharacter.mCooldownTimeRemaining; }).ToList(); //sorts through based on our criteria
+
+        float advanceTime = mBattleCharacter[0].mCooldownTimeRemaining;
+        foreach(SBattleCharacter character in mBattleCharacter) //looking through the list 
+        {
+            character.AdvanceCooldown(advanceTime);
+        }
+
+        SBattleCharacter nextinturn = mBattleCharacter[0];
+        mBattleCharacter[0].TakeTurn();
+
+        mBattleCharacter.Remove(nextinturn);
+        mBattleCharacter.Add(nextinturn);
     }
     private void PrepParty(SBattlePartyComponent Party)
     {
@@ -32,6 +57,8 @@ public class SBattleManager
         {
             partyBattleCharacter.transform.position = partyBattleSite.GetPOSForUnit(i); //putting the character in the right position
             partyBattleCharacter.transform.rotation = partyBattleSite.transform.rotation; //setting the rotation correctly
+            partyBattleCharacter.OnTurnFinished += NextTurn;
+            mBattleCharacter.Add(partyBattleCharacter);
             i++;
         }
         Party.FinishPrep();

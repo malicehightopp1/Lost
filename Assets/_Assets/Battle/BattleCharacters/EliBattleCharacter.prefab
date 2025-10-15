@@ -115,6 +115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: mTurnIndicator
+      value: 
+      objectReference: {fileID: 6060701153157413972}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -123,6 +127,11 @@ PrefabInstance:
       addedObject: {fileID: 635249027394608366}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+--- !u!1 &6060701153157413972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2947555782517219115, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+  m_PrefabInstance: {fileID: 9006141286036087679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6245370373235065587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3049005717341462924, guid: faf050043bf638646b807b5f2ea13778, type: 3}

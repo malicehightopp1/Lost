@@ -17,7 +17,7 @@ public class SGameMode : MonoBehaviour
     }
     void Awake()
     {
-        mBattleManager = new SBattleManager();
+        mBattleManager = gameObject.AddComponent<SBattleManager>();
 
         if(mMainGameMode != null) //making sure we only have one gamemode 
         {
