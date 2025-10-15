@@ -4,19 +4,27 @@ using UnityEngine;
 [RequireComponent(typeof(MovementController))]
 public class SPlayer : MonoBehaviour, IViewClient
 {
-    [SerializeField] private SCameraRig mCameraRigPrefab;
+    [Header("UI")]
+    [SerializeField] private SGameplayWidget mGameplayWidgetPrefab;
+    SGameplayWidget mGameplayWidget;
 
-    private BattleState battleState;
-
+    [Header("Player references")]
     private PlayerInputAction mPlayerInputActions;
-    private SBattlePartyComponent mBattlePartyComponent;
     private MovementController mMovementController;
+
+    [Header("Battle")]
+    private BattleState battleState;
+    private SBattlePartyComponent mBattlePartyComponent;
+
+    [Header("Camera")]
+    [SerializeField] private SCameraRig mCameraRigPrefab;
     SCameraRig mCamerRig;
     void Awake()
     {
         mCamerRig = Instantiate(mCameraRigPrefab);
         mCamerRig.SetFolowTransform(transform);
         mPlayerInputActions = new PlayerInputAction();
+        mGameplayWidget = Instantiate(mGameplayWidgetPrefab);
 
         mMovementController = GetComponent<MovementController>();
         mPlayerInputActions.Gameplay.Jump.performed +=  mMovementController.PerformJump; //detects when jump input happens
@@ -63,6 +71,12 @@ public class SPlayer : MonoBehaviour, IViewClient
         {
             mPlayerInputActions.Gameplay.Enable();
         }
+        mGameplayWidget.DipToBlack(1, 1, DippedToBlack); //when you get to black call to the function of dipped to black **not calling the function more or less just talking to it**
+    }
+    private void DippedToBlack() 
+    {
+        Debug.Log($"Dipped to black called");
+        mBattlePartyComponent.UpdateView();
     }
     public void SetViewTarget(Transform viewTarget)
     {

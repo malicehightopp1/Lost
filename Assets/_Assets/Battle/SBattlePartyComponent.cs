@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 public class SBattlePartyComponent : MonoBehaviour
 {
     [SerializeField] SBattleCharacter[] mBattleCharactersPrefabs;
@@ -12,10 +11,13 @@ public class SBattlePartyComponent : MonoBehaviour
     {
         mOwnerViewClient = GetComponent<IViewClient>();
     }
-
     public void FinishPrep()
     {
-        if(mOwnerViewClient is not null)
+
+    }
+    public void UpdateView()
+    {
+        if (mOwnerViewClient is not null)
         {
             mOwnerViewClient.SetViewTarget(mBattleCharacters[0].transform);
             mOwnerViewClient.ResetViewAngle();
