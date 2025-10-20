@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class SGameplayWidget : MonoBehaviour
 {
     [SerializeField] private Image mTransitionImage;
-
+    [SerializeField] private SChildSwitcher mChildSwitcher;
+    [SerializeField] private GameObject mBattleWidget;
     private void Awake()
     {
         mTransitionImage.gameObject.SetActive(false);
@@ -42,5 +43,9 @@ public class SGameplayWidget : MonoBehaviour
             yield return new WaitForEndOfFrame();  
         }
         mTransitionImage.gameObject.SetActive(false);
+    }
+    internal void SwitchToBattle()
+    {
+        mChildSwitcher.SetActiveChild(mBattleWidget);
     }
 }

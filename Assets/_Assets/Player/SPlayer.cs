@@ -76,6 +76,7 @@ public class SPlayer : MonoBehaviour, IViewClient
     private void DippedToBlack() 
     {
         Debug.Log($"Dipped to black called");
+        mGameplayWidget.SwitchToBattle();
         mBattlePartyComponent.UpdateView();
     }
     public void SetViewTarget(Transform viewTarget)
