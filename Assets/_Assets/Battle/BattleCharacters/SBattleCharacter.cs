@@ -9,6 +9,7 @@ public class SBattleCharacter : MonoBehaviour
     public float mCooldownTimeRemaining { get; private set; }
 
     public event Action OnTurnFinished; //for when finished with turn
+    public event Action<SBattleCharacter> onTurnStarted;
     private void Awake()
     {
         mCooldownTimeRemaining = mCooldownDuration;
@@ -18,6 +19,7 @@ public class SBattleCharacter : MonoBehaviour
     {
         Invoke("FinishTurn", 1);
         mTurnIndicator.SetActive(true);
+        onTurnStarted?.Invoke(this);
         mCooldownTimeRemaining = mCooldownDuration;
     }
     public void FinishTurn()

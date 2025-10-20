@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,13 @@ public class SBattleManager : MonoBehaviour
     List<SBattleCharacter> mBattleCharacter = new List<SBattleCharacter>();
     private PlayerInputAction mAction;
 
+    IViewClient mOwnerViewClient;
     private BattleState mBattleStates;
+    Queue<SBattleCharacter> mFirstBattleCharacterQueue = new Queue<SBattleCharacter>(); //queue every character in to a queue then take them out one by one
+    private void Awake()
+    {
+        mOwnerViewClient = GetComponent<IViewClient>();
+    }
     public void startBattle(SBattlePartyComponent PlayerParty, SBattlePartyComponent EnemyParty)
     {
         mBattleCharacter.Clear(); //clearing before new battle
@@ -27,11 +34,34 @@ public class SBattleManager : MonoBehaviour
     {
         //TODO: refractor to not hard code delay
         yield return new WaitForSeconds(2);
+        UpdateTurnOrder();
+        mFirstBattleCharacterQueue = new Queue<SBattleCharacter>(mBattleCharacter); //adding the characters to the queue in the oder there in by default
+        ProcessFirstRound();
+    }
+    private void ProcessFirstRound() //removes characters from battle characters list
+    {
+        if(mFirstBattleCharacterQueue.TryDequeue(out SBattleCharacter nextBattleCharacter)) //works with seperate container
+        {
+            if(mBattleCharacter.Contains(nextBattleCharacter))
+            {
+                nextBattleCharacter.TakeTurn();
+            }
+            else
+            {
+                ProcessFirstRound();
+            }
+            return;
+        }
+        foreach(SBattleCharacter battlecharacter in mBattleCharacter)
+        {
+            battlecharacter.OnTurnFinished -= ProcessFirstRound;
+            battlecharacter.OnTurnFinished += NextTurn;
+        }
         NextTurn();
     }
     private void NextTurn() 
     {
-        mBattleCharacter = mBattleCharacter.OrderBy((batteCharacter) => { return batteCharacter.mCooldownTimeRemaining; }).ToList(); //sorts through based on our criteria
+        UpdateTurnOrder();
 
         float advanceTime = mBattleCharacter[0].mCooldownTimeRemaining;
         foreach(SBattleCharacter character in mBattleCharacter) //looking through the list 
@@ -45,6 +75,10 @@ public class SBattleManager : MonoBehaviour
         mBattleCharacter.Remove(nextinturn);
         mBattleCharacter.Add(nextinturn);
     }
+    private void UpdateTurnOrder()
+    {
+        mBattleCharacter = mBattleCharacter.OrderBy((batteCharacter) => { return batteCharacter.mCooldownTimeRemaining; }).ThenBy((batteCharacter) => { return 1/batteCharacter.Speed;}).ToList(); //sorts through based on our criteria
+    }
     private void PrepParty(SBattlePartyComponent Party)
     {
         SBattleSite partyBattleSite = mBattleSites.Find((battleSite) => { return !battleSite.IsPlayerSite;}); //takes a callable and converts to a boolean **internal forloop in simple terms** this one is checking for the one thats not the player
@@ -57,7 +91,7 @@ public class SBattleManager : MonoBehaviour
         {
             partyBattleCharacter.transform.position = partyBattleSite.GetPOSForUnit(i); //putting the character in the right position
             partyBattleCharacter.transform.rotation = partyBattleSite.transform.rotation; //setting the rotation correctly
-            partyBattleCharacter.OnTurnFinished += NextTurn;
+            partyBattleCharacter.OnTurnFinished += ProcessFirstRound;
             mBattleCharacter.Add(partyBattleCharacter);
             i++;
         }
