@@ -1,20 +1,32 @@
 using System;
 using UnityEngine;
-
+[RequireComponent(typeof(SAbilityComponent))]
 public class SBattleCharacter : MonoBehaviour
 {
+    [Header("Changable variables")]
     [field: SerializeField] public float Speed { get; private set; } = 1; //actual speed for attack
+    [field: SerializeField] public string Name { get; private set; } = "BattleCharacter"; //actual speed for attack
     [SerializeField] private GameObject mTurnIndicator;
+
+    [Header("Cooldown variables")]
     public float mCooldownDuration => 1f / Speed;
     public float mCooldownTimeRemaining { get; private set; }
 
+    [Header("reference")]
+    SAbilityComponent mAbilityComponent;
     public event Action OnTurnFinished; //for when finished with turn
     public event Action<SBattleCharacter> onTurnStarted;
+    public SAbilityComponent GetAbilityComponet()
+    {
+        return mAbilityComponent;
+    }
     private void Awake()
     {
         mCooldownTimeRemaining = mCooldownDuration;
         mTurnIndicator.SetActive(false);
-    }
+
+        mAbilityComponent = GetComponent<SAbilityComponent>();
+    }         
     public void TakeTurn() //call at start
     {
         Invoke("FinishTurn", 1);

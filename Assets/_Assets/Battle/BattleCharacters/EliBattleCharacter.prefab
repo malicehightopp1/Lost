@@ -115,10 +115,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
       propertyPath: mTurnIndicator
       value: 
       objectReference: {fileID: 6060701153157413972}
+    - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: <Name>k__BackingField
+      value: Ellen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -1,6 +1,5 @@
 using UnityEngine;
-
-[ExecuteAlways]
+[ExecuteAlways] //excutes when in play mode and in edit mode **always runs**
 public class SSpringArm : MonoBehaviour
 {
     [Header("Default Variables")]

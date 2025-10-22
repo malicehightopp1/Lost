@@ -6,7 +6,8 @@ public class SGameplayWidget : MonoBehaviour
 {
     [SerializeField] private Image mTransitionImage;
     [SerializeField] private SChildSwitcher mChildSwitcher;
-    [SerializeField] private GameObject mBattleWidget;
+    [SerializeField] private GameObject mRoamingWidget;
+    [SerializeField] private SBattleWidget mBattleWidget;
     private void Awake()
     {
         mTransitionImage.gameObject.SetActive(false);
@@ -14,6 +15,10 @@ public class SGameplayWidget : MonoBehaviour
     public void DipToBlack(float DipDuration, float DipStayDuration, Action DippedToBlackCallBack) //its callable so we can circle back - callable to doing something **action**
     {
         StartCoroutine(StartDipToBlack(DipDuration, DipStayDuration, DippedToBlackCallBack)); //internally ienumerator is a whille loop
+    }
+    public void SetFocusedCharacterInBattle(SBattleCharacter battleCharacter)
+    {
+        mBattleWidget.SetCharacterContolTarget(battleCharacter);
     }
     IEnumerator StartDipToBlack(float DipDuration, float DipStayDuration, Action DippedToBlackCallBack) //allows a function to be used as its a container
     {
@@ -46,6 +51,10 @@ public class SGameplayWidget : MonoBehaviour
     }
     internal void SwitchToBattle()
     {
-        mChildSwitcher.SetActiveChild(mBattleWidget);
+        mChildSwitcher.SetActiveChild(mBattleWidget.gameObject);
+    }
+    internal void SwitchToRoaming()
+    {
+        mChildSwitcher.SetActiveChild(mRoamingWidget);
     }
 }

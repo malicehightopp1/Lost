@@ -1,8 +1,5 @@
-using System;
 using Unity.Behavior;
-using Unity.VisualScripting;
 using UnityEngine;
-
 public class SEnemy : MonoBehaviour
 {
     [SerializeField] private float mSightDistance = 5f;

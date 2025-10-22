@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4462956603169988788}
   - component: {fileID: 3746049592790911607}
   - component: {fileID: 8392957888455623864}
-  - component: {fileID: 1996282927815574281}
   - component: {fileID: 2453889057511068847}
   - component: {fileID: 7198952623187779346}
   - component: {fileID: 6777172129381317450}
+  - component: {fileID: 869955625203005847}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -85,20 +85,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.99, z: 0}
---- !u!114 &1996282927815574281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5192643698012968006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584dce7efcec2264daed3d8ffeaa83b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mGameplayWidgetPrefab: {fileID: 8730150106440011431, guid: 73f0355988dcacc4fbed6ec4966708c9, type: 3}
-  mCameraRigPrefab: {fileID: 84457519619782979, guid: e0c248d89c36fde40834eaed070bfd4c, type: 3}
 --- !u!95 &2453889057511068847
 Animator:
   serializedVersion: 7
@@ -157,6 +143,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &869955625203005847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192643698012968006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584dce7efcec2264daed3d8ffeaa83b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mGameplayWidgetPrefab: {fileID: 8730150106440011431, guid: 73f0355988dcacc4fbed6ec4966708c9, type: 3}
+  mCameraRigPrefab: {fileID: 84457519619782979, guid: e0c248d89c36fde40834eaed070bfd4c, type: 3}
 --- !u!1001 &3790123983373288095
 PrefabInstance:
   m_ObjectHideFlags: 0

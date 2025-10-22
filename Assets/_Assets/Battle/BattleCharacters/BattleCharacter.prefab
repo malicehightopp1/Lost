@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3049005717341462924}
   - component: {fileID: 8488470496594750972}
   - component: {fileID: 743829490231123788}
+  - component: {fileID: 2213857446377888655}
   m_Layer: 0
   m_Name: BattleCharacter
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 1
+  <Name>k__BackingField: BattleCharacter
   mTurnIndicator: {fileID: 0}
 --- !u!136 &743829490231123788
 CapsuleCollider:
@@ -71,6 +73,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2213857446377888655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974244843035333351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1644460517be7104d9b7bf5539839748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mInitialability:
+  - {fileID: 11400000, guid: 2b14487e578475b41a0b42a9910f0416, type: 2}
 --- !u!1 &2947555782517219115
 GameObject:
   m_ObjectHideFlags: 0

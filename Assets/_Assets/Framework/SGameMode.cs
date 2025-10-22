@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class SGameMode : MonoBehaviour
 {
     [SerializeField] private SPlayer mPlayerGameobjectPrefab;
@@ -17,15 +16,12 @@ public class SGameMode : MonoBehaviour
     }
     void Awake()
     {
-        mBattleManager = gameObject.AddComponent<SBattleManager>();
-
         if(mMainGameMode != null) //making sure we only have one gamemode 
         {
             Destroy(gameObject);
         }
-
         mMainGameMode = this;
-
+        mBattleManager = gameObject.AddComponent<SBattleManager>();
         SPlayerStart playerStart = FindFirstObjectByType<SPlayerStart>();
         if(!playerStart)
         {

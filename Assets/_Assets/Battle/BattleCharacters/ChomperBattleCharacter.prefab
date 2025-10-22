@@ -60,10 +60,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727533937027266099, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
       propertyPath: mTurnIndicator
       value: 
       objectReference: {fileID: 2142372814192054187}
+    - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: <Name>k__BackingField
+      value: Chomper
+      objectReference: {fileID: 0}
     - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
       propertyPath: <Speed>k__BackingField
       value: 2

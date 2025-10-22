@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-
 [RequireComponent(typeof(MovementController))]
 public class SPlayer : MonoBehaviour, IViewClient
 {
@@ -31,10 +29,16 @@ public class SPlayer : MonoBehaviour, IViewClient
         mPlayerInputActions.Gameplay.Move.performed += mMovementController.HandleMoveInput; //detects when move input happens
         mPlayerInputActions.Gameplay.Move.canceled += mMovementController.HandleMoveInput;  //detects when movements stop
 
+        mBattlePartyComponent = GetComponent<SBattlePartyComponent>(); //**MAKE SURE TO ADD ADD COMPONENTS BEFORE YOU USE THEM** **DONT BE DUMB**
+
+        mBattlePartyComponent.onBattleCharacterTakeTurn += battleCharacterTakeTurn;
         mPlayerInputActions.Gameplay.Look.performed += (context) => mCamerRig.SetLookInput(context.ReadValue<Vector2>());//=> - lambda - simpifying so not having to make a function - acts like function but without actually making it 
         mPlayerInputActions.Gameplay.Look.canceled += (context) => mCamerRig.SetLookInput(context.ReadValue<Vector2>());
 
-        mBattlePartyComponent = GetComponent<SBattlePartyComponent>();
+    }
+    private void battleCharacterTakeTurn(SBattleCharacter character)
+    {
+        mGameplayWidget.SetFocusedCharacterInBattle(character);
     }
     private void OnEnable()
     {
