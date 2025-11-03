@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public class SBattleManager : MonoBehaviour 
+[RequireComponent(typeof(STargetingComponent))]
+public class SBattleManager : MonoBehaviour, ITargetService
 {
     List<SBattleSite> mBattleSites;
     List<SBattleCharacter> mBattleCharacter = new List<SBattleCharacter>();
@@ -10,6 +11,9 @@ public class SBattleManager : MonoBehaviour
 
     IViewClient mOwnerViewClient;
     private BattleState mBattleStates;
+
+    STargetingComponent mTargetingComponent;
+
     Queue<SBattleCharacter> mFirstBattleCharacterQueue = new Queue<SBattleCharacter>(); //queue every character in to a queue then take them out one by one
     private void Awake()
     {
@@ -93,5 +97,25 @@ public class SBattleManager : MonoBehaviour
             i++;
         }
         Party.FinishPrep();
+    }
+    public List<SBattleCharacter> GetTargetsForTeam(int teamid, bool hostiletarget) //checking for what an enemy is to the player / enemy
+    {
+        List<SBattleCharacter> targets = new List<SBattleCharacter>();
+        foreach(SBattleCharacter battleCharacter in mBattleCharacter)
+        {
+            if(battleCharacter.mPartyID == teamid && !hostiletarget) //if not an enemy
+            {
+                targets.Add(battleCharacter);
+            }
+            if(battleCharacter.mPartyID != teamid && hostiletarget) //if an enemy
+            {
+                targets.Add(battleCharacter);
+            }
+        }
+        return targets;
+    }
+    public STargetingComponent GetTargetingComponent()
+    {
+        return mTargetingComponent;
     }
 }

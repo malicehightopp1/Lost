@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using NUnit.Framework;
 using System.Collections.Generic;
 public class SBattleWidget : MonoBehaviour
 {

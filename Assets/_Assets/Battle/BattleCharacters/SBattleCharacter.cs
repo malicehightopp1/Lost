@@ -7,7 +7,11 @@ public class SBattleCharacter : MonoBehaviour
     [field: SerializeField] public float Speed { get; private set; } = 1; //actual speed for attack
     [field: SerializeField] public string Name { get; private set; } = "BattleCharacter"; //actual speed for attack
     [SerializeField] private GameObject mTurnIndicator;
-
+    public int mPartyID { get; private set; }
+    public void Init(int partyID)
+    {
+        mPartyID = partyID;
+    }
     [Header("Cooldown variables")]
     public float mCooldownDuration => 1f / Speed;
     public float mCooldownTimeRemaining { get; private set; }

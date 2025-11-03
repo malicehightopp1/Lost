@@ -9,6 +9,8 @@ public class SBattlePartyComponent : MonoBehaviour
 
     IViewClient mOwnerViewClient;
     public event Action<SBattleCharacter> onBattleCharacterTakeTurn;
+
+    [field: SerializeField] public int mPartyID { get; private set; } = 0; //for telling the difference between players and enemies
     private void Awake()
     {
         mOwnerViewClient = GetComponent<IViewClient>();
@@ -39,13 +41,12 @@ public class SBattlePartyComponent : MonoBehaviour
         }
         return mBattleCharacters;
     }
-    private void CharacterInTurn(SBattleCharacter character)
+    private void CharacterInTurn(SBattleCharacter character) //putting the camera behind that players and checking what the player is 
     {
         onBattleCharacterTakeTurn?.Invoke(character);
         if(mOwnerViewClient is not null && character)
         {
-            mOwnerViewClient.SetViewTarget(character.transform);
-            
+            mOwnerViewClient.SetViewTarget(character.transform);          
         }
     }
 } 

@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 4652768265664249212, guid: b0028394933c4f2429650af5ddb6c4f6, type: 3}
   - {fileID: 4652768265664249212, guid: b0028394933c4f2429650af5ddb6c4f6, type: 3}
   - {fileID: 4652768265664249212, guid: b0028394933c4f2429650af5ddb6c4f6, type: 3}
+  <mPartyID>k__BackingField: 1
 --- !u!95 &5334990492932720971
 Animator:
   serializedVersion: 7
