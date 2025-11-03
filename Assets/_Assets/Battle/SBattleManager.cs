@@ -66,7 +66,6 @@ public class SBattleManager : MonoBehaviour
         {
             character.AdvanceCooldown(advanceTime);
         }
-
         SBattleCharacter nextinturn = mBattleCharacter[0];
         mBattleCharacter[0].TakeTurn();
 

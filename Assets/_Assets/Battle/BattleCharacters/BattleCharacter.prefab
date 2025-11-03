@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mInitialability:
   - {fileID: 11400000, guid: 2b14487e578475b41a0b42a9910f0416, type: 2}
+  - {fileID: 11400000, guid: 2b14487e578475b41a0b42a9910f0416, type: 2}
 --- !u!1 &2947555782517219115
 GameObject:
   m_ObjectHideFlags: 0

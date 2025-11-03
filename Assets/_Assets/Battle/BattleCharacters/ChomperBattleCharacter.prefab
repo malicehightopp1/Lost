@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChomperBattleCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 2213857446377888655, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: mInitialability.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213857446377888655, guid: faf050043bf638646b807b5f2ea13778, type: 3}
+      propertyPath: 'mInitialability.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b14487e578475b41a0b42a9910f0416, type: 2}
     - target: {fileID: 3049005717341462924, guid: faf050043bf638646b807b5f2ea13778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -94,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8488470496594750972, guid: faf050043bf638646b807b5f2ea13778, type: 3}
       propertyPath: <Speed>k__BackingField
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

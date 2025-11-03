@@ -29,7 +29,7 @@ public class SBattleCharacter : MonoBehaviour
     }         
     public void TakeTurn() //call at start
     {
-        Invoke("FinishTurn", 1);
+        //Invoke("FinishTurn", 1);
         mTurnIndicator.SetActive(true);
         onTurnStarted?.Invoke(this);
         mCooldownTimeRemaining = mCooldownDuration;

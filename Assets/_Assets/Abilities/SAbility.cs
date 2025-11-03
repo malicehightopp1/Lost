@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 public abstract class SAbility : ScriptableObject //abstract can only be used as parent class
 {
