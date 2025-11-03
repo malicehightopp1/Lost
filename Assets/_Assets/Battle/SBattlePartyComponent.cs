@@ -35,6 +35,7 @@ public class SBattlePartyComponent : MonoBehaviour
             foreach(SBattleCharacter battlecharacter in mBattleCharactersPrefabs)
             {
                 SBattleCharacter newBattleCharacter = Instantiate(battlecharacter);
+                newBattleCharacter.Init(mPartyID); //giving the characters there party id when there made
                 newBattleCharacter.onTurnStarted += CharacterInTurn;
                 mBattleCharacters.Add(newBattleCharacter);
             }

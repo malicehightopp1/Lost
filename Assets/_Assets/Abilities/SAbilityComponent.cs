@@ -4,6 +4,10 @@ public class SAbilityComponent : MonoBehaviour
 {
     [SerializeField] private SAbility[] mInitialability;
     List<SAbility> mAbilities = new List<SAbility>();
+    public int GetPartyId() //grabbing the party id for the abilities and attacks
+    {
+        return GetComponent<SBattleCharacter>().mPartyID;
+    }
     private void Start()
     {
         foreach (SAbility initialAbility in mInitialability)
